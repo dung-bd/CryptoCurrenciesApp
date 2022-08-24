@@ -23,16 +23,16 @@ public class CurrencyRepository {
     private MutableLiveData<Currency> currency;
     private MutableLiveData<List<Detail>> detail;
 
-    public CurrencyRepository(Currency curr){
+    public CurrencyRepository(Currency curr) {
         currency = new MutableLiveData<>(curr);
         detail = new MutableLiveData<>();
     }
 
-    public MutableLiveData<Currency> getCurrencyValue(){
+    public MutableLiveData<Currency> getCurrencyValue() {
         ApiService service = ApiService.Client.getService(Value.class, new ValueDeserializer());
 
         Currency curr = currency.getValue();
-        if(curr.getValue() != null){
+        if (curr.getValue() != null) {
             return currency;
         }
 
@@ -54,12 +54,13 @@ public class CurrencyRepository {
         return currency;
     }
 
-    public MutableLiveData<List<Detail>> getDetail(String currencyId, String type, int count){
-        ApiService service = ApiService.Client.getService(new TypeToken<List<Detail>>() {}.getType(), new DetailListDeserializer());
+    public MutableLiveData<List<Detail>> getDetail(String currencyId, String type, int count) {
+        ApiService service = ApiService.Client.getService(new TypeToken<List<Detail>>() {
+        }.getType(), new DetailListDeserializer());
 
         Call<List<Detail>> call;
 
-        switch (type){
+        switch (type) {
             case "minute":
                 call = service.getDetailMinute(currencyId, Constants.CONVERSION_CURRENCY, count);
                 break;

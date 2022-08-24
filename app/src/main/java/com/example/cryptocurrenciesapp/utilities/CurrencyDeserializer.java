@@ -1,9 +1,5 @@
 package com.example.cryptocurrenciesapp.utilities;
 
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
-
 import com.example.cryptocurrenciesapp.model.Currency;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;

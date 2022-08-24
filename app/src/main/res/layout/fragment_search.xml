@@ -7,7 +7,7 @@
     android:layout_gravity="center_horizontal|top"
     android:orientation="vertical"
     android:padding="20dp"
-    tools:context=".HomeActivity">
+    tools:context=".view.HomeActivity">
 
     <TextView
         android:layout_width="wrap_content"

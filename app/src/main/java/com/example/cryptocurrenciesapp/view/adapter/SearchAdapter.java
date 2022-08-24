@@ -1,6 +1,5 @@
-package com.example.cryptocurrenciesapp.adapters;
+package com.example.cryptocurrenciesapp.view.adapter;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
 import android.util.Log;
@@ -37,8 +36,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
             List<Currency> newFilteredList = new ArrayList<>();
             if (charSequence == null || charSequence.length() == 0) {
                 newFilteredList.addAll(list);
-            }
-            else {
+            } else {
                 String filter = charSequence.toString().toLowerCase().trim();
                 for (Currency currency : list) {
                     if (currency.getId().toLowerCase().contains(filter) || currency.getName().toLowerCase().contains(filter)) {
@@ -59,7 +57,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         }
     };
 
-    public SearchAdapter( List<Currency> list, CurrencyClickListener clickListener) {
+    public SearchAdapter(List<Currency> list, CurrencyClickListener clickListener) {
         this.list = list;
         this.filteredList = new ArrayList<>(list);
         this.clickListener = clickListener;
@@ -91,7 +89,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
         return filteredList.size();
     }
 
-    protected class SearchViewHolder extends RecyclerView.ViewHolder implements Target{
+    protected class SearchViewHolder extends RecyclerView.ViewHolder implements Target {
         private final ImageView logo;
         private final TextView id;
         private final TextView name;
@@ -106,7 +104,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
         @Override
         public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
-             logo.setImageBitmap(bitmap);
+            logo.setImageBitmap(bitmap);
         }
 
         @Override
@@ -129,6 +127,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
 
     public interface CurrencyClickListener {
         void onCurrencyClick(Currency currency);
+
         void onPortfolioClick(Currency currency, boolean checked);
     }
 }

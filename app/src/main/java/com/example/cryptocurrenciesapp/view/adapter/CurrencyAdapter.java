@@ -1,6 +1,5 @@
-package com.example.cryptocurrenciesapp.adapters;
+package com.example.cryptocurrenciesapp.view.adapter;
 
-import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -27,7 +26,7 @@ public class CurrencyAdapter extends RecyclerView.Adapter<CurrencyAdapter.Curren
     private final List<Currency> list;
     private final CurrencyClickListener clickListener;
 
-    public CurrencyAdapter( List<Currency> list, CurrencyClickListener clickListener) {
+    public CurrencyAdapter(List<Currency> list, CurrencyClickListener clickListener) {
         this.list = list;
         this.clickListener = clickListener;
     }
@@ -93,7 +92,8 @@ public class CurrencyAdapter extends RecyclerView.Adapter<CurrencyAdapter.Curren
         }
 
         @Override
-        public void onPrepareLoad(Drawable placeHolderDrawable) {}
+        public void onPrepareLoad(Drawable placeHolderDrawable) {
+        }
 
         public void setupViewClick(View view) {
             view.setOnClickListener(v -> {
@@ -111,8 +111,10 @@ public class CurrencyAdapter extends RecyclerView.Adapter<CurrencyAdapter.Curren
         }
 
     }
+
     public interface CurrencyClickListener {
         void onCurrencyClick(Currency currency);
+
         void onPortfolioClick(Currency currency, boolean checked);
     }
 }

@@ -1,9 +1,4 @@
-package com.example.cryptocurrenciesapp;
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
-import androidx.lifecycle.ViewModelProvider;
+package com.example.cryptocurrenciesapp.view;
 
 import android.annotation.SuppressLint;
 import android.graphics.Color;
@@ -18,6 +13,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.lifecycle.ViewModelProvider;
+
+import com.example.cryptocurrenciesapp.utilities.LockableScrollView;
+import com.example.cryptocurrenciesapp.R;
 import com.example.cryptocurrenciesapp.data.Database;
 import com.example.cryptocurrenciesapp.model.Currency;
 import com.example.cryptocurrenciesapp.model.Detail;
@@ -61,8 +63,8 @@ public class CurrencyActivity extends AppCompatActivity {
             initConversion(currency);
             initInfo(currency);
         });
-viewModel.getDetail().observe(this, detail -> initChart(detail));
-initChipGroup();
+        viewModel.getDetail().observe(this, detail -> initChart(detail));
+        initChipGroup();
     }
 
     @Override
@@ -134,14 +136,18 @@ initChipGroup();
                 try {
                     double input = Double.parseDouble(s.toString());
                     inputTarget.setText(String.valueOf(input * currency.getValue().getRawPrice()));
-                }
-                catch (NumberFormatException e) {
+                } catch (NumberFormatException e) {
                     inputTarget.setText("");
                 }
             }
 
-            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-            @Override public void afterTextChanged(Editable s) { }
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
         });
 
         inputTarget.addTextChangedListener(new TextWatcher() {
@@ -154,14 +160,18 @@ initChipGroup();
                 try {
                     double input = Double.parseDouble(s.toString());
                     inputSource.setText(String.valueOf(input / currency.getValue().getRawPrice()));
-                }
-                catch (NumberFormatException e) {
+                } catch (NumberFormatException e) {
                     inputSource.setText("");
                 }
             }
 
-            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
-            @Override public void afterTextChanged(Editable s) { }
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+            }
         });
 
         inputSource.setOnFocusChangeListener((view, focus) -> inputSourceFocus = focus);
@@ -188,7 +198,9 @@ initChipGroup();
                 labelPrice.setText(Formatter.formatPrice(e.getY()));
             }
 
-            @Override public void onNothingSelected() { }
+            @Override
+            public void onNothingSelected() {
+            }
         });
 
         chart.setOnChartGestureListener(new OnChartGestureListener() {
@@ -210,12 +222,29 @@ initChipGroup();
                 labelPrice.setText(currency.getValue().getPrice());
             }
 
-            @Override public void onChartLongPressed(MotionEvent me) { }
-            @Override public void onChartDoubleTapped(MotionEvent me) { }
-            @Override public void onChartSingleTapped(MotionEvent me) { }
-            @Override public void onChartFling(MotionEvent me1, MotionEvent me2, float velocityX, float velocityY) { }
-            @Override public void onChartScale(MotionEvent me, float scaleX, float scaleY) { }
-            @Override public void onChartTranslate(MotionEvent me, float dX, float dY) { }
+            @Override
+            public void onChartLongPressed(MotionEvent me) {
+            }
+
+            @Override
+            public void onChartDoubleTapped(MotionEvent me) {
+            }
+
+            @Override
+            public void onChartSingleTapped(MotionEvent me) {
+            }
+
+            @Override
+            public void onChartFling(MotionEvent me1, MotionEvent me2, float velocityX, float velocityY) {
+            }
+
+            @Override
+            public void onChartScale(MotionEvent me, float scaleX, float scaleY) {
+            }
+
+            @Override
+            public void onChartTranslate(MotionEvent me, float dX, float dY) {
+            }
         });
 
         List<Entry> entries = new ArrayList<>();

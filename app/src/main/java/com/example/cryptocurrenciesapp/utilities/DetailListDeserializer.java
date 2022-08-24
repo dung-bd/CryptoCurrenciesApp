@@ -20,7 +20,7 @@ public class DetailListDeserializer implements JsonDeserializer<List<Detail>> {
 
         final JsonArray detailArray = json.getAsJsonObject().getAsJsonObject("Data").getAsJsonArray("Data");
 
-        for(JsonElement el : detailArray){
+        for (JsonElement el : detailArray) {
             final JsonObject detail = el.getAsJsonObject();
 
             detailList.add(new Detail(

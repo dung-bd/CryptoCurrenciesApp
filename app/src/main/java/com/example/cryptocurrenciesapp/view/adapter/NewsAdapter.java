@@ -1,4 +1,4 @@
-package com.example.cryptocurrenciesapp.adapters;
+package com.example.cryptocurrenciesapp.view.adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -51,7 +51,7 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.NewsViewHolder
         return data.size();
     }
 
-    protected class NewsViewHolder extends RecyclerView.ViewHolder{
+    protected class NewsViewHolder extends RecyclerView.ViewHolder {
         private final ImageView image;
         private final TextView title;
         private final TextView source;

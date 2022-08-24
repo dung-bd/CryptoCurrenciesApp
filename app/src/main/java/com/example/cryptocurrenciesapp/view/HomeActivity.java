@@ -1,4 +1,6 @@
-package com.example.cryptocurrenciesapp;
+package com.example.cryptocurrenciesapp.view;
+
+import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.NavController;
@@ -6,16 +8,14 @@ import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
-import android.os.Bundle;
-
-import com.example.cryptocurrenciesapp.databinding.ActivityHomeBinding;
+import com.example.cryptocurrenciesapp.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class HomeActivity extends AppCompatActivity {
     private AppBarConfiguration configuration;
     private NavHostFragment navHostFragment;
     private NavController navController;
-    private ActivityHomeBinding binding;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

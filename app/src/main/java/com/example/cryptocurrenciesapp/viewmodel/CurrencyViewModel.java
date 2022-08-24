@@ -20,7 +20,7 @@ public class CurrencyViewModel extends ViewModel {
     private MutableLiveData<List<Detail>> detail;
     private MutableLiveData<List<Currency>> portfolio;
 
-    public CurrencyViewModel(Currency currency, Database database){
+    public CurrencyViewModel(Currency currency, Database database) {
         this.currencyRepository = new CurrencyRepository(currency);
         this.portfolioRepository = PortfolioRepository.getInstance(database);
         this.currency = currencyRepository.getCurrencyValue();
@@ -28,29 +28,29 @@ public class CurrencyViewModel extends ViewModel {
         this.portfolio = portfolioRepository.getCurrenciesFromPortfolio();
     }
 
-    public LiveData<Currency> getCurrency(){
+    public LiveData<Currency> getCurrency() {
         return currency;
     }
 
-    public LiveData<List<Detail>> getDetail(){
+    public LiveData<List<Detail>> getDetail() {
         return detail;
     }
 
-    public void fetchDetail(String type, int count){
+    public void fetchDetail(String type, int count) {
         currencyRepository.getDetail(currency.getValue().getId(), type, count);
     }
 
-    public void handlePortfolioChange(Currency currency, boolean inPortfolio){
-        if(inPortfolio){
+    public void handlePortfolioChange(Currency currency, boolean inPortfolio) {
+        if (inPortfolio) {
             portfolioRepository.insertCurrency(currency);
-        }else{
+        } else {
             portfolioRepository.deleteCurrency(currency);
         }
     }
 
-    public boolean isInPortfolio(Currency currency){
-        if(portfolio.getValue() == null){
-            return  false;
+    public boolean isInPortfolio(Currency currency) {
+        if (portfolio.getValue() == null) {
+            return false;
         }
 
         return portfolio.getValue().stream().anyMatch(c -> c.getId().equals(currency.getId()));

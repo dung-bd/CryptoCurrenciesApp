@@ -1,18 +1,18 @@
-package com.example.cryptocurrenciesapp;
+package com.example.cryptocurrenciesapp.view;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
-import com.example.cryptocurrenciesapp.adapters.CurrencyAdapter;
+import com.example.cryptocurrenciesapp.R;
+import com.example.cryptocurrenciesapp.view.adapter.CurrencyAdapter;
 import com.example.cryptocurrenciesapp.model.Currency;
 import com.example.cryptocurrenciesapp.viewmodel.ListViewModel;
 

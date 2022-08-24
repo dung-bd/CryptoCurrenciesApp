@@ -48,8 +48,9 @@ public class PortfolioRepository {
         }
 
         ApiService apiService = ApiService.Client.getService(
-                new TypeToken<List<Currency>>() {}.getType(), new CurrencyDeserializer());
-       ApiService valueService = ApiService.Client.getService(Value.class, new ValueDeserializer());
+                new TypeToken<List<Currency>>() {
+                }.getType(), new CurrencyDeserializer());
+        ApiService valueService = ApiService.Client.getService(Value.class, new ValueDeserializer());
 
         for (String id : currenciesId) {
             getCurrencyById(id, apiService, valueService);
@@ -114,7 +115,7 @@ public class PortfolioRepository {
         portfolio.setValue(portfolio.getValue());
 
         SQLiteDatabase db = database.getReadableDatabase();
-        return db.delete(Currency.TABLE_NAME, Currency.FIELD_ID + "=?", new String[] {currency.getId()});
+        return db.delete(Currency.TABLE_NAME, Currency.FIELD_ID + "=?", new String[]{currency.getId()});
     }
 
     @SuppressLint("Range")

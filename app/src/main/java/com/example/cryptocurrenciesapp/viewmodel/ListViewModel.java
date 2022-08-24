@@ -1,8 +1,5 @@
 package com.example.cryptocurrenciesapp.viewmodel;
 
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
@@ -11,7 +8,6 @@ import com.example.cryptocurrenciesapp.data.Database;
 import com.example.cryptocurrenciesapp.data.ListRepository;
 import com.example.cryptocurrenciesapp.data.PortfolioRepository;
 import com.example.cryptocurrenciesapp.model.Currency;
-
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +22,7 @@ public class ListViewModel extends ViewModel {
     private MutableLiveData<List<Currency>> portfolio;
     private MutableLiveData<List<Currency>> search;
 
-    public ListViewModel(Database database){
+    public ListViewModel(Database database) {
         this.listRepository = new ListRepository();
         this.portfolioRepository = PortfolioRepository.getInstance(database);
 
@@ -36,7 +32,7 @@ public class ListViewModel extends ViewModel {
         this.search = new MutableLiveData<>(new ArrayList<>());
     }
 
-    public LiveData<List<Currency>> getMarket(){
+    public LiveData<List<Currency>> getMarket() {
         return market;
     }
 
@@ -65,8 +61,7 @@ public class ListViewModel extends ViewModel {
     public void handlePortfolioChange(Currency currency, boolean inPortfolio) {
         if (inPortfolio) {
             portfolioRepository.insertCurrency(currency);
-        }
-        else {
+        } else {
             portfolioRepository.deleteCurrency(currency);
         }
     }

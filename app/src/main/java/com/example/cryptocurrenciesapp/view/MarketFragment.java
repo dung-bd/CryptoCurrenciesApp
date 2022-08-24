@@ -1,22 +1,19 @@
-package com.example.cryptocurrenciesapp;
+package com.example.cryptocurrenciesapp.view;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-
-import androidx.annotation.RequiresApi;
-import androidx.fragment.app.Fragment;
-import androidx.lifecycle.ViewModelProvider;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.cryptocurrenciesapp.adapters.CurrencyAdapter;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.cryptocurrenciesapp.R;
+import com.example.cryptocurrenciesapp.view.adapter.CurrencyAdapter;
 import com.example.cryptocurrenciesapp.data.Database;
 import com.example.cryptocurrenciesapp.model.Currency;
 import com.example.cryptocurrenciesapp.viewmodel.ListViewModel;
@@ -52,12 +49,12 @@ public class MarketFragment extends Fragment {
         RecyclerView recyclerView = view.findViewById(R.id.cryptocurrencyRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         viewModel.getMarket().observe(getViewLifecycleOwner(), data -> {
-            adapter = new CurrencyAdapter( data, new CurrencyAdapter.CurrencyClickListener() {
+            adapter = new CurrencyAdapter(data, new CurrencyAdapter.CurrencyClickListener() {
                 @Override
                 public void onCurrencyClick(Currency currency) {
-                            Intent intent = new Intent(getActivity(), CurrencyActivity.class);
-                            intent.putExtra(CurrencyActivity.CURRENCY_INTENT_KEY, currency);
-                            startActivity(intent);
+                    Intent intent = new Intent(getActivity(), CurrencyActivity.class);
+                    intent.putExtra(CurrencyActivity.CURRENCY_INTENT_KEY, currency);
+                    startActivity(intent);
                     //starter(getActivity(), 1, currency);
                 }
 

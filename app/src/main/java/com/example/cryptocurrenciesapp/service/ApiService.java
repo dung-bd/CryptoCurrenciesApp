@@ -39,7 +39,7 @@ public interface ApiService {
     @GET("v2/news/")
     Call<List<NewsArticle>> getLatestNews(@Query("lang") String language);
 
-   class Client {
+    class Client {
         private static final String BASE_URL = "https://min-api.cryptocompare.com/data/";
 
         private static Converter.Factory createGsonConverter(Type type, Object typeAdapter) {

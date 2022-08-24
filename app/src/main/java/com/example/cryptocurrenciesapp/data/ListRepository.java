@@ -22,7 +22,8 @@ public class ListRepository {
         MutableLiveData<List<Currency>> data = new MutableLiveData<>();
 
         ApiService service = ApiService.Client.getService(
-                new TypeToken<List<Currency>>() {}.getType(), new CurrencyDeserializer());
+                new TypeToken<List<Currency>>() {
+                }.getType(), new CurrencyDeserializer());
 
         Call<List<Currency>> call = service.getCurrencySummary(null);
 
@@ -45,7 +46,8 @@ public class ListRepository {
         MutableLiveData<List<Currency>> data = new MutableLiveData<>();
 
         ApiService service = ApiService.Client.getService(
-                new TypeToken<List<Currency>>() {}.getType(), new CurrencyMarketDeserializer());
+                new TypeToken<List<Currency>>() {
+                }.getType(), new CurrencyMarketDeserializer());
 
         Call<List<Currency>> call = service.getToplistByMarketCap(Constants.CONVERSION_CURRENCY, Constants.MARKET_COUNT);
 

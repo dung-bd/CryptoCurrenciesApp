@@ -14,12 +14,12 @@ public class NewsViewModel extends ViewModel {
 
     private MutableLiveData<List<NewsArticle>> news;
 
-    public NewsViewModel(){
+    public NewsViewModel() {
         repository = new NewsRepository();
     }
 
-    public LiveData<List<NewsArticle>> getNews(){
-        if(news == null){
+    public LiveData<List<NewsArticle>> getNews() {
+        if (news == null) {
             news = repository.getNews();
         }
         return news;

@@ -1,4 +1,4 @@
-package com.example.cryptocurrenciesapp;
+package com.example.cryptocurrenciesapp.utilities;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -24,7 +24,7 @@ public class LockableScrollView extends ScrollView {
         super(context, attrs, defStyleAttr, defStyleRes);
     }
 
-    public boolean isScrollable(){
+    public boolean isScrollable() {
         return scrollable;
     }
 
@@ -34,7 +34,7 @@ public class LockableScrollView extends ScrollView {
 
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
-        if((ev.getAction() == MotionEvent.ACTION_DOWN) && !scrollable){
+        if ((ev.getAction() == MotionEvent.ACTION_DOWN) && !scrollable) {
             return false;
         }
         return super.onTouchEvent(ev);
@@ -42,7 +42,7 @@ public class LockableScrollView extends ScrollView {
 
     @Override
     public boolean onInterceptTouchEvent(MotionEvent event) {
-        if(!scrollable){
+        if (!scrollable) {
             return false;
         }
         return super.onInterceptTouchEvent(event);

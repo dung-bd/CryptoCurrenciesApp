@@ -9,6 +9,7 @@ import com.example.cryptocurrenciesapp.model.Currency;
 
 public class Database extends SQLiteOpenHelper {
     public static final String DATABASE_NAME = "db.sqlite";
+
     public Database(Context context) {
         super(context, DATABASE_NAME, null, 2);
     }
