@@ -1,5 +1,6 @@
 package com.example.cryptocurrenciesapp.view;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -54,9 +55,7 @@ public class SearchFragment extends Fragment {
             adapter = new SearchAdapter(data, new SearchAdapter.CurrencyClickListener() {
                 @Override
                 public void onCurrencyClick(Currency currency) {
-                    Intent intent = new Intent(getActivity(), CurrencyActivity.class);
-                    intent.putExtra(CurrencyActivity.CURRENCY_INTENT_KEY, currency);
-                    startActivity(intent);
+                    starter(getActivity(), currency);
                 }
 
                 @Override
@@ -89,6 +88,12 @@ public class SearchFragment extends Fragment {
             }
         });
         super.onCreateOptionsMenu(menu, inflater);
+    }
+
+    public void starter(Activity activity, Currency currency) {
+        Intent intent = new Intent(activity, CurrencyActivity.class);
+        intent.putExtra(CurrencyActivity.CURRENCY_INTENT_KEY, currency);
+        startActivity(intent);
     }
 
 }

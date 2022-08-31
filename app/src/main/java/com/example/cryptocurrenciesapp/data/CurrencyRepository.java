@@ -82,7 +82,7 @@ public class CurrencyRepository {
 
             @Override
             public void onFailure(Call<List<Detail>> call, Throwable t) {
-                Log.d("getOhlc", t.getMessage());
+                Log.d("getDetail", t.getMessage());
             }
         });
 

@@ -1,5 +1,6 @@
 package com.example.cryptocurrenciesapp.view;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -47,9 +48,7 @@ public class PortfolioFragment extends Fragment {
             adapter = new CurrencyAdapter(data, new CurrencyAdapter.CurrencyClickListener() {
                 @Override
                 public void onCurrencyClick(Currency currency) {
-                    Intent intent = new Intent(getActivity(), CurrencyActivity.class);
-                    intent.putExtra(CurrencyActivity.CURRENCY_INTENT_KEY, currency);
-                    startActivity(intent);
+                    starter(getActivity(), currency);
                 }
 
                 @Override
@@ -60,6 +59,12 @@ public class PortfolioFragment extends Fragment {
             recyclerView.setAdapter(adapter);
         });
         return view;
+    }
+
+    public void starter(Activity activity, Currency currency) {
+        Intent intent = new Intent(activity, CurrencyActivity.class);
+        intent.putExtra(CurrencyActivity.CURRENCY_INTENT_KEY, currency);
+        startActivity(intent);
     }
 
 }

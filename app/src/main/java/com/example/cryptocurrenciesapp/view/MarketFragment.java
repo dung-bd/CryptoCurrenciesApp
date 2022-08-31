@@ -52,10 +52,7 @@ public class MarketFragment extends Fragment {
             adapter = new CurrencyAdapter(data, new CurrencyAdapter.CurrencyClickListener() {
                 @Override
                 public void onCurrencyClick(Currency currency) {
-                    Intent intent = new Intent(getActivity(), CurrencyActivity.class);
-                    intent.putExtra(CurrencyActivity.CURRENCY_INTENT_KEY, currency);
-                    startActivity(intent);
-                    //starter(getActivity(), 1, currency);
+                    starter(getActivity(), currency);
                 }
 
 
@@ -72,12 +69,10 @@ public class MarketFragment extends Fragment {
         return view;
     }
 
-    public static void starter(Activity activity, int code, Currency currency) {
+    public void starter(Activity activity, Currency currency) {
         Intent intent = new Intent(activity, CurrencyActivity.class);
-        Bundle bundle = new Bundle();
-        bundle.putSerializable(CurrencyActivity.CURRENCY_INTENT_KEY, (Serializable) currency);
-        intent.putExtras(bundle);
-        activity.startActivityForResult(intent, code);
+        intent.putExtra(CurrencyActivity.CURRENCY_INTENT_KEY, currency);
+        startActivity(intent);
     }
 
     @Override
